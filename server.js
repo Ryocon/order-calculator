@@ -13,7 +13,7 @@ server.listen(PORT, () => {
 
 
 // fetch function
-function getData() {
+async function getData(retries = 3) {
     var requestOptions = {
         method: 'GET',
         redirect: 'follow',
@@ -45,19 +45,35 @@ function getData() {
         const average = total / customers
             console.log(`Average amount spent: ${average.toFixed(2)}`)
 
+            return
+
         // console.log(result.orders.items)
         // console.log(result)
         // for (let i = 0; i < result.orders.length; i++) {
         //     console.log(result.orders[i].items)
         // }
-
-
       } 
     )  
 
-      .catch(error => console.log('error', error)
+    //   .catch(error => console.log('error', error));
+//     .catch(async error => {
+//         console.error('Whoops!')
+//         await new Promise(resolve => setTimeout(resolve, 1000));
+//     }
+// )
+
+.catch(async error => {
+    console.error('Whoops!');
     
-    );
+    if (retries > 0) {
+        console.log(`lets try again... (${retries} attempts left)`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        getData(retries - 1); 
+    } else {
+        console.log(`It's dead Jim`);
+    }
+});
+    
   }
 
   getData()
