@@ -10,3 +10,17 @@ const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
+
+function getData() {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+    };
+  
+    fetch("https://fauxdata.codelayer.io/api/orders", requestOptions)
+      .then(response => response.text()) 
+      .then(result => console.log(result))  
+      .catch(error => console.log('error', error));
+  }
+
+  getData()
