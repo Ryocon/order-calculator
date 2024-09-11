@@ -11,6 +11,8 @@ server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
 
+
+// fetch function
 function getData() {
     var requestOptions = {
         method: 'GET',
@@ -18,8 +20,14 @@ function getData() {
     };
   
     fetch("https://fauxdata.codelayer.io/api/orders", requestOptions)
-      .then(response => response.text()) 
-      .then(result => console.log(result))  
+      .then(response => response.json()) 
+      .then(result => {
+        // console.log(result.orders.items)
+        // console.log(result)
+        for (let i = 0; i < result.orders.length; i++) {
+            console.log(result.orders[i].items)
+        }
+      } )  
       .catch(error => console.log('error', error));
   }
 
