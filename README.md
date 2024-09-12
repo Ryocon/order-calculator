@@ -23,6 +23,9 @@ order-calculator - [Github Repo](https://github.com/Ryocon/order-calculator)
   The project will need to be downloaded where the command `npm install` will need to be ran to install the dependencies required.
   Nodemon is listed as a dependency but is not required for the project to run and was used for development only.
 
+  To run the app the type the following command into the terminal -
+  `node server.js`
+
   ## Screenshots
   
 ![Example output](images/order-calc-1.PNG)
