@@ -1,7 +1,6 @@
 # order-calculator
 
 order-calculator - [Github Repo](https://github.com/Ryocon/order-calculator)
-Deployed - [Github Pages]()
 
 <img src=https://img.shields.io/badge/License-MIT-orange.svg>
 
