@@ -38,7 +38,7 @@ export async function getData(retries = 3) {
     )  
 
 .catch(async error => {
-    console.error('Whoops!');
+    console.error('Something went wrong!');
     
     if (retries > 0) {
         console.log(`lets try again... (${retries} attempts left)`);
@@ -51,4 +51,4 @@ export async function getData(retries = 3) {
     
   }
 
-  getData()
+//   getData()
