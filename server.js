@@ -14,16 +14,44 @@ server.listen(PORT, () => {
 });
 
 
-inquirer.prompt([
-    {
-        type: 'input',
-        name: 'run',
-        message: 'Press any key to run orders',
+// inquirer.prompt([
+//     {
+//         type: 'input',
+//         name: 'run',
+//         message: 'Press any key to run orders',
         
-    },
-])
-.then(answers => {
-    if (answers) {
-        getData()
-    }
-})
+//     },
+// ])
+// .then(answers => {
+//     if (answers) {
+//         getData()
+//     }
+// })
+
+let delay = 2000
+
+function promptUser() {
+    inquirer
+      .prompt([
+        {
+          type: 'confirm',
+          name: 'run',
+          message: 'Fetch orders?',
+        },
+      ])
+      .then((answers) => {
+        if (answers.run) {
+          getData() 
+            .then(() => {
+              setTimeout(function() {
+                promptUser()
+              }, delay)
+              
+            }) 
+        } else {
+          console.log('Goodbye!')
+        }
+      });
+  }
+  
+  promptUser()
