@@ -1,6 +1,8 @@
 import fetch from "node-fetch";
 
 // fetch function using node-fetch
+// using node-fetch and a node.js server due to CORS and then CORB errors when using vanilla JavaScript fetch functions
+// making a local server was a solution to this issue
 export async function getData(retries = 3) {
   var requestOptions = {
     method: "GET",
